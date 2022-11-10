@@ -1,0 +1,9 @@
+function cond=cond_householder(A)
+a=max_ev(A);
+b=min_householder(A);
+if b == 0
+    cond = inf;
+else
+cond = a/b;
+end
+end

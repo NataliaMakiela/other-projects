@@ -1,0 +1,21 @@
+
+function result=min_householder(A)
+s = size(A);
+n = s(1);
+x = rand(n,1);
+m = 100;
+[Q,R]=householder_transformation(A);
+a.UT = true;
+k=1;
+for i=1:m
+    y=x/norm(x);
+    % t(Q)Q*R*x = t(Q)y; 
+    %R*x = t(Q)*y;
+    %A*x=A*inv(A)y
+    %A = Q*R
+    x = linsolve(R,transpose(Q)*y,a); % R*x=t(Q)*y
+    
+end
+   result = y(k)/x(k); 
+
+end

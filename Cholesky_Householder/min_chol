@@ -1,0 +1,23 @@
+% we're looking for the smallest eigenvalue
+% we'll use the Cholesky decomposition
+% A = L*t(L)
+
+function result=min_chol(A)
+s = size(A);
+n = s(1);
+x = rand(n,1);
+m = 100; %number of iterations
+L = chol(A); 
+a.LT = true; 
+u.UT = true; 
+k=1;
+for i=1:m
+    y=x/norm(x);
+    % L*t(L)*x = y;
+    c = linsolve(L,y,u); % L*c = y 
+    x = linsolve(transpose(L),c,a); % t(L)*x = c 
+end
+   result = y(k)/x(k); 
+   
+
+end

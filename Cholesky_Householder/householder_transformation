@@ -1,0 +1,18 @@
+% QR decomposition using the Householder transformation
+
+function [Q,A]=householder_transformation(A)
+[m,n]=size(A);
+I = eye(m);
+Q = I;
+for i=1:min(m-1,n)
+    
+    a=A(i:m,i);
+    v = a-norm(a)*I(i:m,i);
+    H1 = eye(m-i+1)- (2*v*transpose(v))/(transpose(v)*v);
+    H = [eye(i-1) zeros(i-1,m-i+1);
+        zeros(m-i+1,i-1) H1];
+    A = H*A; % our R is equal to A
+    % R = A
+    Q = Q*H;
+end
+end

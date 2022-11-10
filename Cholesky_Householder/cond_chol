@@ -1,0 +1,10 @@
+% calculates conditional number using Cholesky decomposition
+function cond=cond_chol(A)
+a=max_ev(A); % largest eigenvalue
+b=min_chol(A); % smallest eigenvalue
+if b == 0
+    cond = inf;
+else
+cond = a/b;
+end
+end

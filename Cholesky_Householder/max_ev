@@ -1,0 +1,14 @@
+% we're looking for the largest eigenvalue
+
+function result=max_ev(A)
+s = size(A);
+n = s(1);
+x = rand(n,1); % x - starting vector, x=sigma(a_i*u_i), u_i - eigenvectors
+m = 100;
+    for i=1:m
+        y = x/norm(x); % normalization of x
+        x = A*y; % A*y=sigma(Lambda_i*a_i*u_i), sigma(a_i*u_i) -> a1*u1  => xk -> u1
+    end
+    k = 1;
+    result = x(k)/y(k);
+end
